@@ -1,0 +1,35 @@
+{
+  "theme_name": "iOS26_Y9S",
+  "device_target": ["Huawei Y9S"],
+  "style": "iOS 26-inspired",
+  "version": "0.1.0",
+  "author": "@copilot",
+  "description": "A Huawei Y9S theme concept featuring dense status bar icons, emoji-driven notifications, and iOS-inspired quick settings.",
+  "palette": {
+    "base": "#f5f7fb",
+    "surface": "#ffffff",
+    "surface_alt": "#eef2f8",
+    "primary": "#4b8df8",
+    "secondary": "#8a9bf3",
+    "accent_blue": "#5aa7ff",
+    "success": "#6ed8a5",
+    "warning": "#ffbe5c",
+    "danger": "#ff6b6b",
+    "text_primary": "#101827",
+    "text_secondary": "#536171",
+    "translucent": "rgba(255,255,255,0.24)"
+  },
+  "features": [
+    "status_bar_icons",
+    "quick_settings",
+    "notification_center",
+    "emoji_ui",
+    "glassmorphism",
+    "dynamic_wallpaper_sheen"
+  ],
+  "preview": {
+    "file": "theme/preview/ios26-preview.html",
+    "browser": "open in a modern browser"
+  },
+  "notes": "Real .hwt packaging must be built from device-specific Huawei resources and tooling."
+}

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Huawei Y9S iOS 26-inspired Theme Preview</title>
+    <style>
+      :root {
+        --bg: #edf3ff;
+        --panel: rgba(255, 255, 255, 0.46);
+        --panel-strong: rgba(255, 255, 255, 0.7);
+        --text: #0f172a;
+        --muted: #445066;
+        --icon: #1b2739;
+        --blue: #5aa7ff;
+        --blue-2: #7ea6ff;
+        --purple: #8e9dff;
+        --card: rgba(255,255,255,0.75);
+        --shadow: rgba(10, 15, 40, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(90,167,255,0.7), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(142,157,255,0.65), transparent 26%),
+          linear-gradient(135deg, #eff6ff, #dfe9ff 25%, #edf0ff 100%);
+        color: var(--text);
+      }
+
+      .phone {
+        position: relative;
+        width: 420px;
+        height: 860px;
+        border-radius: 40px;
+        padding: 18px 18px 14px;
+        background: linear-gradient(180deg, rgba(18,24,52,0.9), rgba(32,38,61,0.88));
+        box-shadow: 0 28px 70px rgba(18,25,44,0.2);
+        border: 1px solid rgba(255,255,255,0.2);
+      }
+
+      .screen {
+        position: relative;
+        height: 100%;
+        border-radius: 30px;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.3), rgba(255,255,255,0.12)),
+          linear-gradient(180deg, #cfe0ff, #9cbaf7 38%, #7d98d9 100%);
+      }
+
+      .statusbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 22px 8px;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .left, .right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--icon);
+        box-shadow: 0 0 0 2px rgba(255,255,255,0.25);
+      }
+
+      .signal-bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 3px;
+      }
+
+      .signal-bars span {
+        display: block;
+        width: 4px;
+        border-radius: 3px 3px 0 0;
+        background: var(--icon);
+      }
+
+      .signal-bars span:nth-child(1) { height: 6px; }
+      .signal-bars span:nth-child(2) { height: 9px; }
+      .signal-bars span:nth-child(3) { height: 12px; }
+      .signal-bars span:nth-child(4) { height: 15px; }
+
+      .battery {
+        width: 24px;
+        height: 12px;
+        border: 2px solid var(--icon);
+        border-radius: 4px;
+        position: relative;
+        display: inline-block;
+        background: linear-gradient(90deg, #3ccf86 0 72%, rgba(17,24,39,0.05) 72%);
+      }
+
+      .battery:after {
+        content: "";
+        position: absolute;
+        right: -4px;
+        top: 3px;
+        width: 2px;
+        height: 6px;
+        background: var(--icon);
+        border-radius: 2px;
+      }
+
+      .weather {
+        margin-top: 12px;
+        padding: 0 22px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .emoji {
+        font-size: 58px;
+        filter: drop-shadow(0 12px 14px rgba(58,76,129,0.28));
+      }
+
+      .temp {
+        font-size: 52px;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .sub {
+        font-size: 14px;
+        color: var(--muted);
+        margin-top: 8px;
+        font-weight: 600;
+      }
+
+      .card {
+        margin: 18px 18px 0;
+        padding: 16px 16px 18px;
+        background: var(--panel);
+        border: 1px solid rgba(255,255,255,0.25);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        box-shadow: 0 18px 28px var(--shadow);
+      }
+
+      .mini-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .tile-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .tile {
+        background: rgba(255,255,255,0.32);
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 18px;
+        min-height: 74px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: var(--text);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .tile .icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 10px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.58), rgba(255,255,255,0.3));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+      }
+
+      .notifications {
+        position: absolute;
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .notif {
+        background: rgba(255,255,255,0.52);
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 22px;
+        padding: 12px 14px;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 12px 26px rgba(20,24,44,0.08);
+      }
+
+      .notif-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--muted);
+      }
+
+      .notif-body {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #6bb9ff, #7590ff);
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+      }
+
+      .notif-main {
+        flex: 1;
+      }
+
+      .title {
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .message {
+        margin-top: 4px;
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.4;
+      }
+
+      .emoji-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.7);
+        border-radius: 999px;
+        padding: 4px 8px;
+        min-width: 40px;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="phone">
+      <div class="screen">
+        <div class="statusbar">
+          <div class="left">
+            <span>9:41</span>
+          </div>
+          <div class="right">
+            <div class="signal-bars">
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <span>📶</span>
+            <span class="battery"></span>
+          </div>
+        </div>
+
+        <div class="weather">
+          <div>
+            <div class="emoji">☀️</div>
+          </div>
+          <div style="text-align: right;">
+            <div class="temp">29°</div>
+            <div class="sub">Sunny · 20% chance of emoji</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="mini-row">
+            <span>Quick Settings</span>
+            <span>⚡</span>
+          </div>
+          <div class="tile-grid">
+            <div class="tile"><div class="icon">📶</div>Wi‑Fi</div>
+            <div class="tile"><div class="icon">🟢</div>Bluetooth</div>
+            <div class="tile"><div class="icon">✈️</div>Plane</div>
+            <div class="tile"><div class="icon">💡</div>Flash</div>
+            <div class="tile"><div class="icon">📍</div>Location</div>
+            <div class="tile"><div class="icon">📱</div>Cast</div>
+            <div class="tile"><div class="icon">🔋</div>Battery</div>
+            <div class="tile"><div class="icon">🌙</div>Focus</div>
+          </div>
+        </div>
+
+        <div class="notifications">
+          <div class="notif">
+            <div class="notif-head">
+              <span>Messages</span>
+              <span>now</span>
+            </div>
+            <div class="notif-body">
+              <div class="avatar">💬</div>
+              <div class="notif-main">
+                <div class="title">Team chat</div>
+                <div class="message">“The new theme is looking clean 😎”</div>
+              </div>
+              <div class="emoji-pill">✨</div>
+            </div>
+          </div>
+
+          <div class="notif">
+            <div class="notif-head">
+              <span>Instagram</span>
+              <span>2m</span>
+            </div>
+            <div class="notif-body">
+              <div class="avatar">📸</div>
+              <div class="notif-main">
+                <div class="title">New reel uploaded</div>
+                <div class="message">Your iOS-inspired look is trending now 🔥</div>
+              </div>
+              <div class="emoji-pill">📲</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
